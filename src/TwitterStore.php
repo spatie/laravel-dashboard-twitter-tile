@@ -20,7 +20,7 @@ class TwitterStore
 
     public function addTweet(array $tweetProperties)
     {
-        $tweets = $this->tile->getData('tweets');
+        $tweets = $this->tile->getData('tweets') ?? [];
 
         array_unshift($tweets, $tweetProperties);
 

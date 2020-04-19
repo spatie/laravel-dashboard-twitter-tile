@@ -21,7 +21,7 @@ class TwitterTileComponent extends Component
 
     public function render()
     {
-        return view('components.tiles.twitter', [
+        return view('dashboard-twitter-tile::tile', [
             'tweets' => TwitterStore::make($this->configurationName)->tweets(),
         ]);
     }

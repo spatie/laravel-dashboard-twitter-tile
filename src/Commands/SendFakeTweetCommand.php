@@ -36,7 +36,7 @@ class SendFakeTweetCommand extends Command
             ? 'regularTweet'
             : 'tweetWithQuote';
 
-        $tweetStub = file_get_contents(__DIR__ . "../../resources/stubs/{$stubName}.json");
+        $tweetStub = file_get_contents(__DIR__ . "/../../resources/stubs/{$stubName}.json");
 
         $tweetContent = $this->fillPlaceHolders($tweetStub, [
             '%text%' => $text,
