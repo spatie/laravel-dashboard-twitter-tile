@@ -12,7 +12,7 @@ class TwitterTileComponent extends Component
     /** @var string */
     public $configurationName;
 
-    public function mount(string $position, string $configurationName)
+    public function mount(string $position, string $configurationName = 'default')
     {
         $this->position = $position;
 

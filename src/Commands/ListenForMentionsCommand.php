@@ -3,7 +3,6 @@
 namespace Spatie\TwitterTile\Commands;
 
 use Illuminate\Console\Command;
-use Spatie\LaravelTwitterStreamingApi\TwitterStreamingApi;
 use Spatie\TwitterStreamingApi\PublicStream;
 use Spatie\TwitterTile\TwitterStore;
 
@@ -27,20 +26,15 @@ class ListenForMentionsCommand extends Command
 
         $this->info("Listening for mentions for configuration named `{$configurationName}`...");
 
-        app(PublicStream::class)
-            ->whenHears($configuration['listenFor'], function (array $tweetProperties) {
-                TwitterStore::make()->addTweet();
-            });
-
-        app(TwitterStreamingApi::class)
-            ->publicStream()
-            ->whenHears([
-                'spatie.be',
-                '@spatie_be',
-                'github.com/spatie',
-            ], function (array $tweetProperties) {
-                TwitterStore::make()->addTweet($tweetProperties);
-            })
+        (new PublicStream(
+            $configuration['access_token'],
+            $configuration['access_secret'],
+            $configuration['consumer_key'],
+            $configuration['consumer_secret'],
+        ))
+            ->whenHears(
+                $configuration['listenFor'],
+                fn(array $tweetProperties) => TwitterStore::make($configurationName)->addTweet($tweetProperties))
             ->startListening();
     }
 }
