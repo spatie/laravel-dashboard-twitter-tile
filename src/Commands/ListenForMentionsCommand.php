@@ -28,7 +28,7 @@ class ListenForMentionsCommand extends Command
 
         (new PublicStream(
             $configuration['access_token'],
-            $configuration['access_secret'],
+            $configuration['access_token_secret'],
             $configuration['consumer_key'],
             $configuration['consumer_secret'],
         ))
