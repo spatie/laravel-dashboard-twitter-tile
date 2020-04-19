@@ -34,7 +34,8 @@ class ListenForMentionsCommand extends Command
         ))
             ->whenHears(
                 $configuration['listenFor'],
-                fn(array $tweetProperties) => TwitterStore::make($configurationName)->addTweet($tweetProperties))
+                fn (array $tweetProperties) => TwitterStore::make($configurationName)->addTweet($tweetProperties)
+            )
             ->startListening();
     }
 }
