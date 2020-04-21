@@ -33,7 +33,7 @@ class ListenForMentionsCommand extends Command
             $configuration['consumer_secret'],
         ))
             ->whenHears(
-                $configuration['listenFor'],
+                $configuration['listen_for'],
                 fn (array $tweetProperties) => TwitterStore::make($configurationName)->addTweet($tweetProperties)
             )
             ->startListening();
