@@ -20,6 +20,10 @@ class TwitterTileServiceProvider extends ServiceProvider
             ]);
         }
 
-        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'dashboard-twitter-tile-views');
+        $this->publishes([
+            __DIR__ . '/../resources/views' => resource_path('views/vendor/dashboard-twitter-tile'),
+        ], 'dashboard-calendar-twitter-views');
+
+        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'dashboard-twitter-tile');
     }
 }
