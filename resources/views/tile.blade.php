@@ -1,11 +1,11 @@
-<x-dashboard-tile :position="$position">
+<x-dashboard-tile :position="$position" :refresh-interval="$refreshIntervalInSeconds">
     <div class="grid grid-rows-auto-1 gap-4">
         @isset($title)
             <h1 class="uppercase font-bold">
                 {{ $title }}
             </h1>
         @endisset
-        <ul wire:poll.5s class="divide-y-2 -my-2">
+        <ul class="divide-y-2 -my-2">
             @foreach($tweets as $tweet)
                 <li class="overflow-hidden py-4">
                     <div class="grid gap-2">
