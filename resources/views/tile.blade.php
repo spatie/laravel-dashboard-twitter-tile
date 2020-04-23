@@ -1,17 +1,20 @@
 <x-dashboard-tile :position="$position">
-    <ul wire:poll.5s class="grid" style="grid-auto-rows: auto;">
+    <ul wire:poll.5s class="divide-y-2">
         @foreach($tweets as $tweet)
-            <li class="overflow-hidden pb-4 mb-4 border-b-2 border-screen">
-                <div class="markup grid gap-padding" style="grid-auto-rows: auto">
-                    <div class="grid gap-2 items-center w-full" style="grid-template-columns: auto 1fr">
-                        <div class="flex-none overflow-hidden w-10 h-10 rounded-full">
-                            <img alt="avatar" class="filter-grey block w-10 h-10" src="{{ $tweet->authorAvatar() }}"
-                                 style="object-fit: cover;"/>
-                            <div class="absolute pin bg-accent opacity-25"></div>
+            <li class="overflow-hidden py-4">
+                <div class="grid gap-2">
+                    <div class="grid grid-cols-auto-1 gap-2 items-center">
+                        <div class="overflow-hidden w-10 h-10 rounded-full relative">
+                            <img
+                                src="{{ $tweet->authorAvatar() }}"
+                                class="block w-10 h-10 object-cover filter-gray"
+                                style="filter: contrast(75%) grayscale(1) brightness(150%)"
+                            />
+                            <div class="absolute inset-0 bg-accent opacity-25"></div>
                         </div>
                         <div class="leading-tight min-w-0">
-                            <h2 class="truncate">{{ $tweet->authorName() }}</h2>
-                            <div class="truncate text-sm">{{ $tweet->authorScreenName() }}</div>
+                            <h2 class="truncate font-bold">{{ $tweet->authorName() }}</h2>
+                            <div class="truncate text-sm text-dimmed">{{ $tweet->authorScreenName() }}</div>
                         </div>
                     </div>
                     <div>
