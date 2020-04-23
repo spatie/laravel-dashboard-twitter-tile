@@ -107,23 +107,4 @@ class Tweet
 
         return $this->text();
     }
-
-    public function displayClass(): string
-    {
-        $textLenght = strlen($this->text());
-
-        if ($textLenght < 30) {
-            return 'text-lg';
-        }
-
-        if ($textLenght < 60) {
-            return 'text-md';
-        }
-
-        if ($textLenght < 100) {
-            return 'text-base';
-        }
-
-        return 'text-sm';
-    }
 }
