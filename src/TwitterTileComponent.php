@@ -23,6 +23,7 @@ class TwitterTileComponent extends Component
     {
         return view('dashboard-twitter-tile::tile', [
             'tweets' => TwitterStore::make($this->configurationName)->tweets(),
+            'refreshIntervalInSeconds' => config('dashboard.tiles.twitter.refresh_interval_in_seconds') ?? 5
         ]);
     }
 }
