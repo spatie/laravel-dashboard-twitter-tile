@@ -44,7 +44,7 @@ class Tweet
     {
         $media = Arr::get($this->tweetProperties, 'attachments.media_keys.0', null);
 
-        if (!$media) {
+        if (! $media) {
             return '';
         }
 
@@ -57,7 +57,7 @@ class Tweet
     {
         $timestamp = strtotime($this->tweetProperties['created_at']);
 
-        if (!$timestamp) {
+        if (! $timestamp) {
             return null;
         }
 

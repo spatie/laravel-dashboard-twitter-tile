@@ -5,7 +5,6 @@ namespace Spatie\TwitterTile\Commands;
 use Illuminate\Console\Command;
 use Spatie\TwitterLabs\FilteredStream\FilteredStreamFactory;
 use Spatie\TwitterLabs\FilteredStream\Responses\Tweet\Tweet;
-use Spatie\TwitterStreamingApi\PublicStream;
 use Spatie\TwitterTile\TwitterStore;
 
 class ListenForMentionsCommand extends Command
