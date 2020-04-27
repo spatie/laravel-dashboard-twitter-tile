@@ -4,6 +4,7 @@ namespace Spatie\TwitterTile;
 
 use Carbon\Carbon;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Str;
 
 class Tweet
 {
@@ -15,36 +16,48 @@ class Tweet
     {
         $this->tweetProperties = $tweetProperties;
 
-        if ($this->hasQuote() && $this->tweetProperties['quoted_status'] ?? false) {
-            $this->quotedTweet = new Tweet($this->tweetProperties['quoted_status']);
+        if ($this->hasQuote()) {
+            $quote = collect($this->tweetProperties['referenced_tweets'] ?? [])
+                ->where('type', 'quoted')
+                ->first();
+
+            $this->quotedTweet = new Tweet($this->getIncluded($quote['id'], 'tweet'));
         }
     }
 
     public function authorScreenName(): string
     {
-        return "@{$this->tweetProperties['user']['screen_name']}";
+        return "@{$this->getAuthor()['username']}";
     }
 
     public function authorName(): string
     {
-        return $this->tweetProperties['user']['name'];
+        return $this->getAuthor()['name'];
     }
 
     public function authorAvatar(): string
     {
-        return $this->tweetProperties['user']['profile_image_url_https'];
+        return $this->getAuthor()['profile_image_url'];
     }
 
     public function image(): string
     {
-        return Arr::get($this->tweetProperties, 'extended_entities.media.0.media_url_https', '');
+        $media = Arr::get($this->tweetProperties, 'attachments.media_keys.0', null);
+
+        if (!$media) {
+            return '';
+        }
+
+        return $this->getMedia($media['id'])['url']
+            ?? $this->getMedia($media['id'])['preview_image_url']
+            ?? '';
     }
 
     public function date(): ?Carbon
     {
         $timestamp = strtotime($this->tweetProperties['created_at']);
 
-        if (! $timestamp) {
+        if (!$timestamp) {
             return null;
         }
 
@@ -53,7 +66,9 @@ class Tweet
 
     public function isRetweet(): bool
     {
-        return Arr::has($this->tweetProperties, 'retweeted_status');
+        return collect($this->tweetProperties['referenced_tweets'] ?? [])
+            ->where('type', 'retweeted')
+            ->isNotEmpty();
     }
 
     public function bySpatie(): bool
@@ -63,15 +78,9 @@ class Tweet
 
     public function hasQuote(): bool
     {
-        if (! $this->tweetProperties['is_quote_status']) {
-            return false;
-        }
-
-        if (! Arr::has($this->tweetProperties, 'quoted_status')) {
-            return false;
-        }
-
-        return true;
+        return collect(Arr::get($this->tweetProperties, 'referenced_tweets', []))
+            ->where('type', 'quoted')
+            ->isNotEmpty();
     }
 
     public function quote(): ?Tweet
@@ -81,30 +90,37 @@ class Tweet
 
     public function text()
     {
-        $text = $this->tweetProperties['text'];
-
-        $media = Arr::get($this->tweetProperties, 'extended_entities.media', []);
-
-        $text = collect($media)
-            ->map(fn (array $media) => $media['url'])
-            ->reduce(fn ($text, $mediaUrl) => str_replace($mediaUrl, '', $text), $text);
-
-        $displayTextRange = $this->tweetProperties['display_text_range'] ?? false;
-        if ($displayTextRange) {
-            $text = substr($text, $displayTextRange[0], $displayTextRange[1]);
-        }
-
-        return $text;
+        return $this->tweetProperties['text'];
     }
 
     public function html(): string
     {
-        /*
-         * TODO: add
-         *    .replace(/(#\w*[0-9a-zA-Z]+\w*[0-9a-zA-Z])/g, '<span class="tweet__body__hashtag">$1</span>')
-            .replace(/(@\w*[0-9a-zA-Z]+\w*[0-9a-zA-Z])/g, '<span class="tweet__body__handle">$1</span>');
-         */
+        $html = $this->text();
 
-        return $this->text();
+        preg_replace("/(#\w*[0-9a-zA-Z]+\w*[0-9a-zA-Z])/g", '<span class="tweet__body__hashtag">$1</span>', $html);
+        preg_replace("/(@\w*[0-9a-zA-Z]+\w*[0-9a-zA-Z])/g", '<span class="tweet__body__handle">$1</span>', $html);
+
+        return $html;
+    }
+
+    protected function getAuthor(): array
+    {
+        return $this->getIncluded($this->tweetProperties['author_id'], 'user');
+    }
+
+    protected function getMedia(string $mediaKey): array
+    {
+        return collect(Arr::get($this->tweetProperties, 'includes.media', []))
+            ->where('media_key', $mediaKey)
+            ->first();
+    }
+
+    protected function getIncluded(string $id, string $type = 'tweet'): array
+    {
+        $type = Str::plural($type);
+
+        return collect(Arr::get($this->tweetProperties, "includes.{$type}", []))
+            ->where('id', $id)
+            ->first();
     }
 }
