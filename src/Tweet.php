@@ -21,7 +21,12 @@ class Tweet
                 ->where('type', 'quoted')
                 ->first();
 
-            $this->quotedTweet = new Tweet($this->getIncluded($quote['id'], 'tweet'));
+            $quoteProperties = array_merge(
+                $this->getIncluded($quote['id'], 'tweet'),
+                ['includes' => $this->tweetProperties['includes']],
+            );
+
+            $this->quotedTweet = new Tweet($quoteProperties);
         }
     }
 
@@ -42,14 +47,14 @@ class Tweet
 
     public function image(): string
     {
-        $media = Arr::get($this->tweetProperties, 'attachments.media_keys.0', null);
+        $mediaKey = Arr::get($this->tweetProperties, 'attachments.media_keys.0', null);
 
-        if (! $media) {
+        if (! $mediaKey) {
             return '';
         }
 
-        return $this->getMedia($media['id'])['url']
-            ?? $this->getMedia($media['id'])['preview_image_url']
+        return $this->getMedia($mediaKey)['url']
+            ?? $this->getMedia($mediaKey)['preview_image_url']
             ?? '';
     }
 
@@ -97,8 +102,8 @@ class Tweet
     {
         $html = $this->text();
 
-        preg_replace("/(#\w*[0-9a-zA-Z]+\w*[0-9a-zA-Z])/", '<span class="tweet__body__hashtag">$1</span>', $html);
-        preg_replace("/(@\w*[0-9a-zA-Z]+\w*[0-9a-zA-Z])/", '<span class="tweet__body__handle">$1</span>', $html);
+        $html = preg_replace("/(#\w+)/", '<span class="font-bold">$1</span>', $html);
+        $html = preg_replace("/(@\w{1,15})/", '<span class="font-bold">$1</span>', $html);
 
         return $html;
     }

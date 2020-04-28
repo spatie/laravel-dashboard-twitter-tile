@@ -30,7 +30,7 @@
                             </div>
                         </div>
                         <div class="text-xs">
-                            <div>{{ $tweet->html() }}</div>
+                            <div>{!! $tweet->html() !!}</div>
                             @if ($tweet->hasQuote())
                                 <div class="mt-1 text-dimmed">
                                     <span> In reply to {{ $tweet->quote()->authorScreenName() }} </span>
@@ -45,7 +45,7 @@
 
                         @if ($tweet->hasQuote())
                             <div class="py-2 pl-2 text-xs text-dimmed border-l-2 border-screen">
-                                {{ $tweet->quote()->html() }}
+                                {!! $tweet->quote()->html() !!}
                             </div>
                         @endif
                     </div>
