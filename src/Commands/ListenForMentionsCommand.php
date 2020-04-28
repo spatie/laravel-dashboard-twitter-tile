@@ -5,6 +5,7 @@ namespace Spatie\TwitterTile\Commands;
 use Illuminate\Console\Command;
 use Spatie\TwitterLabs\FilteredStream\FilteredStreamFactory;
 use Spatie\TwitterLabs\FilteredStream\Responses\Tweet\Tweet;
+use Spatie\TwitterLabs\FilteredStream\Rule;
 use Spatie\TwitterTile\TwitterStore;
 
 class ListenForMentionsCommand extends Command
@@ -32,7 +33,8 @@ class ListenForMentionsCommand extends Command
             $configuration['access_token_secret'],
         );
 
-        $filteredStream->setRules($configuration['listen_for']);
+        $rules = array_map(fn ($rule) => new Rule($rule), $configuration['listen_for']);
+        $filteredStream->setRules(...$rules);
 
         $filteredStream
             ->onTweet(fn (Tweet $tweet) => TwitterStore::make($configurationName)->addTweet($tweet))
