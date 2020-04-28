@@ -97,8 +97,8 @@ class Tweet
     {
         $html = $this->text();
 
-        preg_replace("/(#\w*[0-9a-zA-Z]+\w*[0-9a-zA-Z])/g", '<span class="tweet__body__hashtag">$1</span>', $html);
-        preg_replace("/(@\w*[0-9a-zA-Z]+\w*[0-9a-zA-Z])/g", '<span class="tweet__body__handle">$1</span>', $html);
+        preg_replace("/(#\w*[0-9a-zA-Z]+\w*[0-9a-zA-Z])/", '<span class="tweet__body__hashtag">$1</span>', $html);
+        preg_replace("/(@\w*[0-9a-zA-Z]+\w*[0-9a-zA-Z])/", '<span class="tweet__body__handle">$1</span>', $html);
 
         return $html;
     }
