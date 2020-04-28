@@ -1,156 +1,90 @@
 {
-    "created_at": "%currentTime",
-    "id": 829639681142845442,
-    "id_str": "829639681142845442",
-    "text": "%text%",
-    "truncated": false,
-    "entities": {
-    "hashtags": [],
-        "symbols": [],
-        "user_mentions": [],
-        "urls": [{
-        "url": "https:\/\/t.co\/vfYGmD3wVe",
-        "expanded_url": "https:\/\/twitter.com\/spatie_be\/status\/829391006067982337",
-        "display_url": "twitter.com\/spatie_be\/stat\u2026",
-        "indices": [5, 28]
-    }]
-},
-    "source": "<a href=\"http:\/\/twitter.com\" rel=\"nofollow\">Twitter Web Client<\/a>",
-    "in_reply_to_status_id": null,
-    "in_reply_to_status_id_str": null,
-    "in_reply_to_user_id": null,
-    "in_reply_to_user_id_str": null,
-    "in_reply_to_screen_name": null,
-    "user": {
-    "id": 50056622,
-        "id_str": "50056622",
-        "name": "Alex",
-        "screen_name": "AlexVanderbist",
-        "location": "Antwerp, Belgium",
-        "url": null,
-        "description": "Student & web developer, 21 years old.",
-        "protected": false,
-        "followers_count": 216,
-        "friends_count": 385,
-        "listed_count": 5,
-        "created_at": "Tue Jun 23 18:27:12 +0000 2009",
-        "favourites_count": 1311,
-        "utc_offset": 3600,
-        "time_zone": "Brussels",
-        "geo_enabled": true,
-        "verified": false,
-        "statuses_count": 1559,
-        "lang": "nl",
-        "contributors_enabled": false,
-        "is_translator": false,
-        "is_translation_enabled": false,
-        "profile_background_color": "EBEBEB",
-        "profile_background_image_url": "http:\/\/abs.twimg.com\/images\/themes\/theme7\/bg.gif",
-        "profile_background_image_url_https": "https:\/\/abs.twimg.com\/images\/themes\/theme7\/bg.gif",
-        "profile_background_tile": false,
-        "profile_image_url": "http:\/\/pbs.twimg.com\/profile_images\/744852765525028864\/g2MphyFz_normal.jpg",
-        "profile_image_url_https": "https:\/\/pbs.twimg.com\/profile_images\/744852765525028864\/g2MphyFz_normal.jpg",
-        "profile_banner_url": "https:\/\/pbs.twimg.com\/profile_banners\/50056622\/1466421788",
-        "profile_link_color": "D62B4E",
-        "profile_sidebar_border_color": "DFDFDF",
-        "profile_sidebar_fill_color": "F3F3F3",
-        "profile_text_color": "333333",
-        "profile_use_background_image": true,
-        "default_profile": false,
-        "default_profile_image": false,
-        "following": null,
-        "follow_request_sent": null,
-        "notifications": null,
-        "translator_type": "none"
-},
-    "geo": null,
-    "coordinates": null,
-    "place": null,
-    "contributors": null,
-    "is_quote_status": true,
-    "quoted_status_id": 829391006067982337,
-    "quoted_status_id_str": "829391006067982337",
-    "quoted_status": {
-    "created_at": "Wed Feb 08 18:06:39 +0000 2017",
-        "id": 829391006067982337,
-        "id_str": "829391006067982337",
-        "text": "%quote%",
-        "truncated": false,
+    "data": {
+        "id": "1255024979722330117",
+        "created_at": "%currentTime%",
+        "text": "%text%",
+        "author_id": "2942998673",
+        "referenced_tweets": [
+            {
+                "type": "quoted",
+                "id": "1255013087175901184"
+            }
+        ],
         "entities": {
-        "hashtags": [],
-            "symbols": [],
-            "user_mentions": [],
-            "urls": [{
-            "url": "https:\/\/t.co\/ytqUv2wxVE",
-            "expanded_url": "http:\/\/git-awards.com\/users?language=php",
-            "display_url": "git-awards.com\/users?language\u2026",
-            "indices": [103, 126]
-        }]
+            "urls": [
+                {
+                    "start": 12,
+                    "end": 35,
+                    "url": "https://t.co/FS4ir6zQeg",
+                    "expanded_url": "https://twitter.com/joshuachenault1/status/1255013087175901184",
+                    "display_url": "twitter.com/joshuachenault…"
+                }
+            ]
+        },
+        "format": "default"
     },
-    "source": "<a href=\"http:\/\/tapbots.com\/tweetbot\" rel=\"nofollow\">Tweetbot for i\u039fS<\/a>",
-        "in_reply_to_status_id": null,
-        "in_reply_to_status_id_str": null,
-        "in_reply_to_user_id": null,
-        "in_reply_to_user_id_str": null,
-        "in_reply_to_screen_name": null,
-        "user": {
-        "id": 92947501,
-            "id_str": "92947501",
-            "name": "Spatie",
-            "screen_name": "spatie_be",
-            "location": "Antwerp, Belgium",
-            "url": "http:\/\/spatie.be",
-            "description": "Spatie is a webdesign agency based in Antwerp, Belgium. We specialize in @laravelphp development and create a lot of OSS https:\/\/spatie.be\/opensource",
-            "protected": false,
-            "followers_count": 1423,
-            "friends_count": 474,
-            "listed_count": 47,
-            "created_at": "Fri Nov 27 10:59:27 +0000 2009",
-            "favourites_count": 243,
-            "utc_offset": 3600,
-            "time_zone": "Brussels",
-            "geo_enabled": false,
-            "verified": false,
-            "statuses_count": 3968,
-            "lang": "en",
-            "contributors_enabled": false,
-            "is_translator": false,
-            "is_translation_enabled": false,
-            "profile_background_color": "007698",
-            "profile_background_image_url": "http:\/\/abs.twimg.com\/images\/themes\/theme14\/bg.gif",
-            "profile_background_image_url_https": "https:\/\/abs.twimg.com\/images\/themes\/theme14\/bg.gif",
-            "profile_background_tile": false,
-            "profile_image_url": "http:\/\/pbs.twimg.com\/profile_images\/758257719656742912\/VFt0XpKH_normal.jpg",
-            "profile_image_url_https": "https:\/\/pbs.twimg.com\/profile_images\/758257719656742912\/VFt0XpKH_normal.jpg",
-            "profile_banner_url": "https:\/\/pbs.twimg.com\/profile_banners\/92947501\/1469617720",
-            "profile_link_color": "0D58DB",
-            "profile_sidebar_border_color": "FFFFFF",
-            "profile_sidebar_fill_color": "EFEFEF",
-            "profile_text_color": "333333",
-            "profile_use_background_image": true,
-            "default_profile": false,
-            "default_profile_image": false,
-            "following": null,
-            "follow_request_sent": null,
-            "notifications": null,
-            "translator_type": "none"
+    "includes": {
+        "tweets": [
+            {
+                "id": "1255013087175901184",
+                "created_at": "2020-04-28T05:56:51.000Z",
+                "text": "%quote%",
+                "author_id": "1700029182",
+                "attachments": {
+                    "media_keys": [
+                        "3_1255013084147695616",
+                        "3_1255013084156104711",
+                        "3_1255013084147613696",
+                        "3_1255013084151889920"
+                    ]
+                },
+                "entities": {
+                    "urls": [
+                        {
+                            "start": 155,
+                            "end": 178,
+                            "url": "https://t.co/632N4mbJwV"
+                        }
+                    ]
+                },
+                "format": "default"
+            }
+        ],
+        "users": [
+            {
+                "id": "2942998673",
+                "created_at": "2014-12-27T00:30:02.000Z",
+                "name": "Alex",
+                "username": "alexvanderbist",
+                "protected": false,
+                "url": "",
+                "description": "",
+                "verified": false,
+                "profile_image_url": "https://pbs.twimg.com/profile_images/744852765525028864/g2MphyFz_normal.jpg",
+                "most_recent_tweet_id": "1255024979722330117",
+                "pinned_tweet_id": "1148373571485478912",
+                "format": "default"
+            },
+            {
+                "id": "1700029182",
+                "created_at": "2013-08-25T20:10:38.000Z",
+                "name": "Spatie",
+                "username": "spatie_be",
+                "protected": false,
+                "location": "Washington, DC",
+                "url": "",
+                "description": "Lover of all things entertainment! | contact: joshuachenault1@gmail.com",
+                "verified": false,
+                "profile_image_url": "https://pbs.twimg.com/profile_images/758257719656742912/VFt0XpKH_normal.jpg",
+                "most_recent_tweet_id": "1255013087175901184",
+                "format": "default"
+            }
+        ]
     },
-    "geo": null,
-        "coordinates": null,
-        "place": null,
-        "contributors": null,
-        "is_quote_status": false,
-        "retweet_count": 0,
-        "favorite_count": 0,
-        "favorited": false,
-        "retweeted": false,
-        "possibly_sensitive": false,
-        "lang": "en"
-},
-    "retweet_count": 0,
-    "favorite_count": 0,
-    "favorited": false,
-    "retweeted": false,
-    "possibly_sensitive": false,
-    "lang": "en"
+    "matching_rules": [
+        {
+            "id": "1254668485994729473",
+            "tag": "memes"
+        }
+    ]
 }
