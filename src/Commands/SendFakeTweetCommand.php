@@ -5,6 +5,7 @@ namespace Spatie\TwitterTile\Commands;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
 use Illuminate\Foundation\Inspiring;
+use Spatie\TwitterLabs\FilteredStream\Responses\Tweet\Tweet;
 use Spatie\TwitterTile\TwitterStore;
 
 class SendFakeTweetCommand extends Command
@@ -25,7 +26,7 @@ class SendFakeTweetCommand extends Command
 
         $tweetProperties = $this->getFakeTweetProperties($text, $quote);
 
-        TwitterStore::make($this->argument('configurationName'))->addTweet($tweetProperties);
+        TwitterStore::make($this->argument('configurationName'))->addTweet(new Tweet($tweetProperties));
 
         $this->info('All done!');
     }

@@ -103,19 +103,19 @@ class Tweet
         return $html;
     }
 
-    protected function getAuthor(): array
+    protected function getAuthor(): ?array
     {
         return $this->getIncluded($this->tweetProperties['author_id'], 'user');
     }
 
-    protected function getMedia(string $mediaKey): array
+    protected function getMedia(string $mediaKey): ?array
     {
         return collect(Arr::get($this->tweetProperties, 'includes.media', []))
             ->where('media_key', $mediaKey)
             ->first();
     }
 
-    protected function getIncluded(string $id, string $type = 'tweet'): array
+    protected function getIncluded(string $id, string $type = 'tweet'): ?array
     {
         $type = Str::plural($type);
 
