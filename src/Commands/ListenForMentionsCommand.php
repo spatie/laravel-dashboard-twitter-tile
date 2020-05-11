@@ -29,8 +29,8 @@ class ListenForMentionsCommand extends Command
         $this->info("Listening for mentions for configuration named `{$configurationName}`...");
 
         $filteredStream = FilteredStreamFactory::create(
-            $configuration['access_token'],
-            $configuration['access_token_secret'],
+            $configuration['consumer_key'],
+            $configuration['consumer_secret'],
         );
 
         $rules = array_map(fn ($rule) => new Rule($rule), $configuration['listen_for']);
