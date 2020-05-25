@@ -3,9 +3,6 @@
 namespace Spatie\TwitterTile\Commands;
 
 use Illuminate\Console\Command;
-use Spatie\TwitterLabs\FilteredStream\FilteredStreamFactory;
-use Spatie\TwitterLabs\FilteredStream\Responses\Tweet\Tweet;
-use Spatie\TwitterLabs\FilteredStream\Rule;
 use Spatie\TwitterStreamingApi\PublicStream;
 use Spatie\TwitterTile\TwitterStore;
 
