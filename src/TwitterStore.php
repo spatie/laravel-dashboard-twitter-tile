@@ -3,7 +3,6 @@
 namespace Spatie\TwitterTile;
 
 use Spatie\Dashboard\Models\Tile;
-use Spatie\TwitterLabs\FilteredStream\Responses\Tweet\Tweet as TwitterLabsTweet;
 
 class TwitterStore
 {
@@ -19,11 +18,11 @@ class TwitterStore
         $this->tile = Tile::firstOrCreateForName("twitter_{$configurationName}");
     }
 
-    public function addTweet(TwitterLabsTweet $tweet)
+    public function addTweet(array $tweetProperties)
     {
         $tweets = $this->tile->getData('tweets') ?? [];
 
-        array_unshift($tweets, $tweet->toArray());
+        array_unshift($tweets, $tweetProperties);
 
         $tweets = array_slice($tweets, 0, 50);
 
