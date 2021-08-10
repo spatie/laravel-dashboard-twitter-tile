@@ -91,7 +91,7 @@ class Tweet
 
         $displayTextRange = $this->tweetProperties['display_text_range'] ?? false;
         if ($displayTextRange) {
-            $text = substr($text, $displayTextRange[0], $displayTextRange[1]);
+            $text = mb_substr($text, $displayTextRange[0], $displayTextRange[1]);
         }
 
         return $text;
