@@ -2,6 +2,10 @@
 
 All notable changes to `laravel-dashboard-twitter-tile` will be documented in this file
 
+## 2.0.2 - 2021-08-11
+
+- fix multibyte string tweets (#9)
+
 ## 2.0.1 - 2020-12-12
 
 - allow PHP 8
