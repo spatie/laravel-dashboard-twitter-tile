@@ -1,10 +1,6 @@
-
-[<img src="https://github-ads.s3.eu-central-1.amazonaws.com/support-ukraine.svg?t=1" />](https://supportukrainenow.org)
-
 # A tile to display Twitter mentions
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/spatie/laravel-dashboard-twitter-tile.svg?style=flat-square)](https://packagist.org/packages/spatie/laravel-dashboard-twitter-tile)
-[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/spatie/laravel-dashboard-twitter-tile/run-tests?label=tests)](https://github.com/spatie/laravel-dashboard-twitter-tile/actions?query=workflow%3Arun-tests+branch%3Amaster)
 [![Total Downloads](https://img.shields.io/packagist/dt/spatie/laravel-dashboard-twitter-tile.svg?style=flat-square)](https://packagist.org/packages/spatie/laravel-dashboard-twitter-tile)
 
 This tile can used on the [Laravel Dashboard](https://docs.spatie.be/laravel-dashboard) to display Twitter mentions.
